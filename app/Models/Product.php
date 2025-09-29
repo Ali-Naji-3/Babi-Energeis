@@ -71,6 +71,20 @@ class Product extends Model
         $images = $this->images ?? [];
         return !empty($images) ? $images[0] : null;
     }
+    
+    public function getMainImageUrlAttribute()
+    {
+        $mainImage = $this->getMainImageAttribute();
+        return $mainImage ? asset($mainImage) : null;
+    }
+    
+    public function getImageUrlsAttribute()
+    {
+        $images = $this->images ?? [];
+        return array_map(function($image) {
+            return asset($image);
+        }, $images);
+    }
 
     // Scopes
     public function scopeActive($query)

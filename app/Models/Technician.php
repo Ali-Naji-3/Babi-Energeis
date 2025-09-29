@@ -11,7 +11,7 @@ class Technician extends Model
 
     protected $fillable = [
         'user_id',
-        'employee_id',
+        'employee_name',
         'specialization',
         'certification_level',
         'experience_years',
@@ -19,12 +19,16 @@ class Technician extends Model
         'availability_schedule',
         'rating',
         'status',
+        'specialization_areas',
+        'certification_expiry',
     ];
 
     protected $casts = [
         'hourly_rate' => 'decimal:2',
         'rating' => 'decimal:2',
         'availability_schedule' => 'array',
+        'specialization_areas' => 'array',
+        'certification_expiry' => 'date',
     ];
 
     // Relationships

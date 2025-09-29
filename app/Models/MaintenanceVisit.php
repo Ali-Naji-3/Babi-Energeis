@@ -12,6 +12,7 @@ class MaintenanceVisit extends Model
     protected $fillable = [
         'solar_installation_id',
         'technician_id',
+        'energy_audit_id',
         'visit_date',
         'visit_type',
         'status',
@@ -37,6 +38,16 @@ class MaintenanceVisit extends Model
     public function technician()
     {
         return $this->belongsTo(Technician::class);
+    }
+
+    public function energyAudit()
+    {
+        return $this->belongsTo(EnergyAudit::class);
+    }
+
+    public function auditMaintenanceTracking()
+    {
+        return $this->hasMany(AuditMaintenanceTracking::class);
     }
 
     // Scopes

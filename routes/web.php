@@ -49,9 +49,7 @@ Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->
 // Protected Routes
 Route::middleware('auth')->group(function () {
     // Dashboard
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
     
     // Home redirect for customers
     Route::get('/home', function () {
@@ -86,6 +84,30 @@ Route::middleware('auth')->group(function () {
     // Maintenance Routes
     Route::get('/maintenance', [MaintenanceController::class, 'index'])->name('maintenance');
     Route::get('/maintenance/create', [MaintenanceController::class, 'create'])->name('maintenance.create');
+    
+    // Dashboard API Routes
+    Route::get('/api/dashboard/stats', [App\Http\Controllers\DashboardController::class, 'getStats'])->name('dashboard.stats');
+    Route::get('/api/dashboard/activity', [App\Http\Controllers\DashboardController::class, 'getRecentActivity'])->name('dashboard.activity');
+    
+    // Lebanese Energy Services API Routes
+    Route::get('/api/energy-audits', [App\Http\Controllers\EnergyAuditController::class, 'index']);
+    Route::post('/api/energy-audits', [App\Http\Controllers\EnergyAuditController::class, 'store']);
+    Route::get('/api/energy-audits/{audit}', [App\Http\Controllers\EnergyAuditController::class, 'show']);
+    Route::put('/api/energy-audits/{audit}/status', [App\Http\Controllers\EnergyAuditController::class, 'updateStatus']);
+    Route::put('/api/energy-audits/{audit}/assign-technician', [App\Http\Controllers\EnergyAuditController::class, 'assignTechnician']);
+    
+    Route::get('/api/maintenance-visits', [App\Http\Controllers\MaintenanceController::class, 'index']);
+    Route::post('/api/maintenance-visits', [App\Http\Controllers\MaintenanceController::class, 'store']);
+    Route::get('/api/maintenance-visits/upcoming', [App\Http\Controllers\MaintenanceController::class, 'upcoming']);
+    Route::put('/api/maintenance-visits/{visit}/status', [App\Http\Controllers\MaintenanceController::class, 'updateStatus']);
+    Route::post('/api/maintenance-visits/{visit}/photos', [App\Http\Controllers\MaintenanceController::class, 'addPhotos']);
+    Route::post('/api/maintenance-visits/{visit}/parts', [App\Http\Controllers\MaintenanceController::class, 'recordParts']);
+    
+    Route::get('/api/technicians/lebanon', [App\Http\Controllers\TechnicianController::class, 'lebanon']);
+    Route::get('/api/technician/profile', [App\Http\Controllers\TechnicianController::class, 'profile']);
+    Route::get('/api/technician/schedule', [App\Http\Controllers\TechnicianController::class, 'schedule']);
+    Route::put('/api/technician/availability', [App\Http\Controllers\TechnicianController::class, 'updateAvailability']);
+    Route::put('/api/technician/status', [App\Http\Controllers\TechnicianController::class, 'updateStatus']);
     Route::post('/maintenance', [MaintenanceController::class, 'store'])->name('maintenance.store');
     
     // Profile Routes

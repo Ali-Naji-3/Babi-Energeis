@@ -22,6 +22,8 @@ class EnergyAudit extends Model
         'estimated_savings',
         'report_file',
         'notes',
+        'maintenance_schedule',
+        'follow_up_required',
     ];
 
     protected $casts = [
@@ -29,6 +31,8 @@ class EnergyAudit extends Model
         'estimated_savings' => 'decimal:2',
         'audit_date' => 'date',
         'recommendations' => 'array',
+        'maintenance_schedule' => 'array',
+        'follow_up_required' => 'boolean',
     ];
 
     // Relationships
@@ -45,6 +49,16 @@ class EnergyAudit extends Model
     public function solarInstallations()
     {
         return $this->hasMany(SolarInstallation::class);
+    }
+
+    public function maintenanceVisits()
+    {
+        return $this->hasMany(MaintenanceVisit::class);
+    }
+
+    public function auditMaintenanceTracking()
+    {
+        return $this->hasMany(AuditMaintenanceTracking::class);
     }
 
     // Scopes

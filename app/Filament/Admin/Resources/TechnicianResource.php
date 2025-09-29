@@ -23,10 +23,8 @@ class TechnicianResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('employee_id')
+                Forms\Components\TextInput::make('employee_name')
+                    ->label('Name of Employee')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('specialization')
@@ -55,11 +53,10 @@ class TechnicianResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('employee_name')
+                    ->label('Employee Name')
+                    ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('employee_id')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('specialization')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('certification_level')

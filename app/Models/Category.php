@@ -49,4 +49,9 @@ class Category extends Model
     {
         return $query->whereNull('parent_id');
     }
+    
+    public function getImageUrlAttribute()
+    {
+        return $this->image ? asset($this->image) : null;
+    }
 }
