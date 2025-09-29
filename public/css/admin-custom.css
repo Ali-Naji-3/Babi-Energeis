@@ -1,0 +1,336 @@
+/* BabiEnergies Custom Professional Dashboard - No Filament Branding */
+
+/* Hide all Filament branding and references */
+[data-filament-branding],
+.filament-branding,
+.filament-footer,
+.filament-sidebar-brand,
+.filament-sidebar-brand-logo,
+.filament-sidebar-brand-name,
+.filament-sidebar-brand-description {
+    display: none !important;
+}
+
+/* Custom Professional Header */
+.filament-header {
+    background: linear-gradient(135deg, #16a34a 0%, #2563eb 100%) !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Custom Professional Sidebar */
+.filament-sidebar {
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%) !important;
+    border-right: 1px solid #e2e8f0 !important;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Custom Professional Navigation */
+.filament-sidebar-nav {
+    padding: 1rem 0 !important;
+}
+
+.filament-sidebar-nav-item {
+    margin: 0.25rem 0.5rem !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease !important;
+}
+
+.filament-sidebar-nav-item:hover {
+    background-color: #f0fdf4 !important;
+    transform: translateX(2px) !important;
+}
+
+.filament-sidebar-nav-item-active {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%) !important;
+    color: white !important;
+    box-shadow: 0 2px 4px rgba(34, 197, 94, 0.3) !important;
+}
+
+/* Custom Professional Cards */
+.filament-card {
+    border-radius: 12px !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #e2e8f0 !important;
+    transition: all 0.2s ease !important;
+}
+
+.filament-card:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Custom Professional Buttons */
+.filament-button-primary {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%) !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+    border: none !important;
+}
+
+.filament-button-primary:hover {
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(34, 197, 94, 0.3) !important;
+}
+
+/* Custom Professional Tables */
+.filament-table {
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.filament-table-header {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+}
+
+.filament-table-row:hover {
+    background-color: #f0fdf4 !important;
+}
+
+/* Custom Professional Forms */
+.filament-form-field {
+    border-radius: 8px !important;
+}
+
+.filament-input {
+    border-radius: 8px !important;
+    border: 1px solid #d1d5db !important;
+    transition: all 0.2s ease !important;
+}
+
+.filament-input:focus {
+    border-color: #22c55e !important;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1) !important;
+}
+
+/* Custom Professional Stats */
+.filament-stats-overview-stat {
+    border-radius: 12px !important;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+    border: 1px solid #e2e8f0 !important;
+    transition: all 0.2s ease !important;
+}
+
+.filament-stats-overview-stat:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Custom Professional Navigation Groups */
+.filament-sidebar-nav-group-label {
+    color: #6b7280 !important;
+    font-weight: 600 !important;
+    font-size: 0.75rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    margin: 1rem 0 0.5rem 0 !important;
+}
+
+/* Custom Professional Dashboard */
+.dashboard-welcome {
+    background: linear-gradient(135deg, #22c55e 0%, #3b82f6 100%) !important;
+    border-radius: 16px !important;
+    padding: 2rem !important;
+    color: white !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Custom Professional Quick Actions */
+.quick-action-card {
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    transition: all 0.2s ease !important;
+    border: 1px solid #e2e8f0 !important;
+    background: white !important;
+}
+
+.quick-action-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Custom Professional Activity Feed */
+.activity-item {
+    border-radius: 8px !important;
+    padding: 1rem !important;
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    transition: all 0.2s ease !important;
+}
+
+.activity-item:hover {
+    background: #f0fdf4 !important;
+    border-color: #bbf7d0 !important;
+}
+
+/* Custom Professional Status Badges */
+.status-badge {
+    border-radius: 9999px !important;
+    padding: 0.25rem 0.75rem !important;
+    font-size: 0.75rem !important;
+    font-weight: 500 !important;
+}
+
+.status-pending {
+    background-color: #fef3c7 !important;
+    color: #92400e !important;
+}
+
+.status-completed {
+    background-color: #d1fae5 !important;
+    color: #065f46 !important;
+}
+
+.status-processing {
+    background-color: #dbeafe !important;
+    color: #1e40af !important;
+}
+
+/* Custom Professional Icons */
+.icon-container {
+    border-radius: 8px !important;
+    padding: 0.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.icon-green {
+    background-color: #dcfce7 !important;
+    color: #16a34a !important;
+}
+
+.icon-blue {
+    background-color: #dbeafe !important;
+    color: #2563eb !important;
+}
+
+.icon-yellow {
+    background-color: #fef3c7 !important;
+    color: #d97706 !important;
+}
+
+.icon-orange {
+    background-color: #fed7aa !important;
+    color: #ea580c !important;
+}
+
+/* Hide Filament Footer and Branding */
+.filament-footer,
+.filament-sidebar-footer,
+[data-filament-footer],
+.filament-branding,
+.filament-sidebar-brand {
+    display: none !important;
+}
+
+/* Custom Professional Typography */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-weight: 400 !important;
+    line-height: 1.6 !important;
+}
+
+/* Custom Professional Scrollbars */
+::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9 !important;
+    border-radius: 3px !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1 !important;
+    border-radius: 3px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8 !important;
+}
+
+/* Custom Professional Animations */
+.filament-fade-in {
+    animation: fadeIn 0.3s ease-in-out !important;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Custom Professional Loading States */
+.filament-loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%) !important;
+    background-size: 200% 100% !important;
+    animation: loading 1.5s infinite !important;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Custom Professional Responsive Design */
+@media (max-width: 768px) {
+    .filament-sidebar {
+        transform: translateX(-100%) !important;
+        transition: transform 0.3s ease !important;
+    }
+    
+    .filament-sidebar-open {
+        transform: translateX(0) !important;
+    }
+}
+
+/* Hide any remaining Filament references */
+[class*="filament-branding"],
+[class*="filament-footer"],
+[data-filament-branding],
+[data-filament-footer] {
+    display: none !important;
+}
+
+/* Custom Professional Dashboard Title */
+.filament-page-header-heading {
+    font-size: 1.875rem !important;
+    font-weight: 700 !important;
+    color: #1f2937 !important;
+}
+
+/* Custom Professional Navigation Icons */
+.filament-sidebar-nav-item-icon {
+    color: #6b7280 !important;
+    transition: color 0.2s ease !important;
+}
+
+.filament-sidebar-nav-item-active .filament-sidebar-nav-item-icon {
+    color: white !important;
+}
+
+/* Custom Professional Search */
+.filament-global-search {
+    border-radius: 8px !important;
+    border: 1px solid #d1d5db !important;
+    transition: all 0.2s ease !important;
+}
+
+.filament-global-search:focus {
+    border-color: #22c55e !important;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1) !important;
+}
