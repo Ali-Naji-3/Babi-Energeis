@@ -34,7 +34,7 @@ class AdminPanelProvider extends PanelProvider
                 'warning' => Color::Orange,
                 'danger' => Color::Red,
             ])
-            ->favicon(asset('images/favicon.ico'))
+            ->favicon(asset('favicon.ico'))
             ->brandLogoHeight('2.5rem')
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\\Filament\\Admin\\Resources')
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\\Filament\\Admin\\Pages')

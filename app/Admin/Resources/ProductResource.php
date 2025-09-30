@@ -23,9 +23,11 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('category_id')
+                Forms\Components\Select::make('category_id')
+                    ->relationship('category', 'name')
                     ->required()
-                    ->numeric(),
+                    ->searchable()
+                    ->preload(),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
@@ -47,8 +49,6 @@ class ProductResource extends Resource
                     ->prefix('$'),
                 Forms\Components\TextInput::make('sale_price')
                     ->numeric(),
-                Forms\Components\TextInput::make('cost_price')
-                    ->numeric(),
                 Forms\Components\TextInput::make('stock_quantity')
                     ->required()
                     ->numeric()
@@ -59,24 +59,31 @@ class ProductResource extends Resource
                     ->default(5),
                 Forms\Components\TextInput::make('weight')
                     ->numeric(),
-                Forms\Components\TextInput::make('dimensions')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('specifications'),
-                Forms\Components\TextInput::make('features'),
+                Forms\Components\KeyValue::make('specifications')
+                    ->keyLabel('Specification')
+                    ->valueLabel('Value')
+                    ->reorderable()
+                    ->columnSpanFull(),
+                Forms\Components\KeyValue::make('features')
+                    ->keyLabel('Feature')
+                    ->valueLabel('Description')
+                    ->reorderable()
+                    ->columnSpanFull(),
                 Forms\Components\FileUpload::make('images')
+                    ->label('Product Images')
                     ->image()
                     ->multiple()
+                    ->maxFiles(10)
                     ->imageEditor()
                     ->imageEditorAspectRatios([
                         '16:9',
                         '4:3',
                         '1:1',
                     ])
-                    ->maxSize(2048) // 2MB max per image
+                    ->maxSize(2048)
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                     ->directory('images/products')
                     ->visibility('public')
-                    ->disk('local')
                     ->imageResizeMode('cover')
                     ->imageCropAspectRatio('16:9')
                     ->imageResizeTargetWidth('800')
@@ -85,7 +92,9 @@ class ProductResource extends Resource
                     ->appendFiles()
                     ->previewable()
                     ->downloadable()
-                    ->openable(),
+                    ->openable()
+                    ->columnSpanFull()
+                    ->helperText('Upload up to 10 product images. First image will be the main image.'),
                 Forms\Components\Toggle::make('is_active')
                     ->required(),
                 Forms\Components\Toggle::make('is_featured')
@@ -101,9 +110,10 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('category_id')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('category.name')
+                    ->label('Category')
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')
@@ -117,9 +127,6 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('sale_price')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('cost_price')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('stock_quantity')
                     ->numeric()
                     ->sortable(),
@@ -129,8 +136,6 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('weight')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('dimensions')
-                    ->searchable(),
                 Tables\Columns\IconColumn::make('is_active')
                     ->boolean(),
                 Tables\Columns\IconColumn::make('is_featured')

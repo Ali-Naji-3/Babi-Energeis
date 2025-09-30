@@ -7,10 +7,38 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="card">
-                    <div class="card-body text-center">
-                        <i class="bi bi-solar-panel" style="font-size: 8rem; color: var(--primary-color);"></i>
-                        <h2 class="mt-3">{{ $product->name }}</h2>
-                        <p class="text-muted">{{ $product->short_description ?? $product->description }}</p>
+                    <div class="card-body">
+                        @if($product->images && count($product->images) > 0)
+                            <!-- Main Image Display -->
+                            <div class="text-center mb-3">
+                                <img id="mainImage" 
+                                     src="{{ Storage::url($product->images[0]) }}" 
+                                     alt="{{ $product->name }}" 
+                                     class="img-fluid rounded" 
+                                     style="max-height: 400px; object-fit: contain;">
+                            </div>
+                            
+                            <!-- Thumbnail Gallery -->
+                            @if(count($product->images) > 1)
+                                <div class="d-flex gap-2 justify-content-center flex-wrap">
+                                    @foreach($product->images as $index => $image)
+                                        <img src="{{ Storage::url($image) }}" 
+                                             alt="{{ $product->name }}" 
+                                             class="img-thumbnail" 
+                                             style="width: 80px; height: 80px; object-fit: cover; cursor: pointer;"
+                                             onclick="changeMainImage('{{ Storage::url($image) }}', this)">
+                                    @endforeach
+                                </div>
+                            @endif
+                        @else
+                            <!-- Fallback Icon -->
+                            <div class="text-center">
+                                <i class="bi bi-solar-panel" style="font-size: 8rem; color: var(--primary-color);"></i>
+                            </div>
+                        @endif
+                        
+                        <h2 class="mt-3 text-center">{{ $product->name }}</h2>
+                        <p class="text-muted text-center">{{ $product->short_description ?? $product->description }}</p>
                         
                         <div class="d-flex justify-content-center align-items-center mb-4">
                             @if($product->sale_price)
@@ -82,7 +110,7 @@
                         @if($product->features)
                             <h5>Features</h5>
                             <ul>
-                                @foreach(json_decode($product->features, true) ?? [] as $feature)
+                                @foreach($product->features ?? [] as $feature)
                                     <li>{{ $feature }}</li>
                                 @endforeach
                             </ul>
@@ -92,7 +120,7 @@
                             <h5>Specifications</h5>
                             <div class="table-responsive">
                                 <table class="table table-sm">
-                                    @foreach(json_decode($product->specifications, true) ?? [] as $key => $value)
+                                    @foreach($product->specifications ?? [] as $key => $value)
                                         <tr>
                                             <td><strong>{{ $key }}:</strong></td>
                                             <td>{{ $value }}</td>
@@ -122,7 +150,14 @@
                 <div class="col-md-3">
                     <div class="card h-100">
                         <div class="card-body text-center">
-                            <i class="bi bi-solar-panel" style="font-size: 3rem; color: var(--primary-color);"></i>
+                            @if($relatedProduct->images && count($relatedProduct->images) > 0)
+                                <img src="{{ Storage::url($relatedProduct->images[0]) }}" 
+                                     alt="{{ $relatedProduct->name }}" 
+                                     class="img-fluid rounded mb-2" 
+                                     style="height: 120px; width: 100%; object-fit: contain;">
+                            @else
+                                <i class="bi bi-solar-panel" style="font-size: 3rem; color: var(--primary-color);"></i>
+                            @endif
                             <h5 class="card-title mt-3">{{ $relatedProduct->name }}</h5>
                             <p class="card-text text-muted small">{{ Str::limit($relatedProduct->short_description ?? $relatedProduct->description, 80) }}</p>
                             
@@ -154,5 +189,27 @@ function addToCart(productId) {
     // Simple cart functionality - in a real app, this would make an AJAX request
     alert('Product added to cart! (This is a demo)');
 }
+
+function changeMainImage(imageUrl, thumbnail) {
+    // Update main image
+    document.getElementById('mainImage').src = imageUrl;
+    
+    // Update active thumbnail styling
+    document.querySelectorAll('.img-thumbnail').forEach(img => {
+        img.style.border = '2px solid #dee2e6';
+        img.style.opacity = '0.7';
+    });
+    thumbnail.style.border = '2px solid var(--bs-primary)';
+    thumbnail.style.opacity = '1';
+}
+
+// Set first thumbnail as active on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const firstThumbnail = document.querySelector('.img-thumbnail');
+    if (firstThumbnail) {
+        firstThumbnail.style.border = '2px solid var(--bs-primary)';
+        firstThumbnail.style.opacity = '1';
+    }
+});
 </script>
 @endsection

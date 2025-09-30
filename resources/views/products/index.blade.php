@@ -53,7 +53,14 @@
                     <div class="card h-100">
                         <div class="card-body d-flex flex-column">
                             <div class="text-center mb-3">
-                                <i class="bi bi-solar-panel" style="font-size: 3rem; color: var(--primary-color);"></i>
+                                @if($product->images && count($product->images) > 0)
+                                    <img src="{{ Storage::url($product->images[0]) }}" 
+                                         alt="{{ $product->name }}" 
+                                         class="img-fluid rounded" 
+                                         style="height: 150px; width: 100%; object-fit: contain;">
+                                @else
+                                    <i class="bi bi-solar-panel" style="font-size: 3rem; color: var(--primary-color);"></i>
+                                @endif
                             </div>
                             <h5 class="card-title">{{ $product->name }}</h5>
                             <p class="card-text text-muted small">{{ Str::limit($product->short_description ?? $product->description, 100) }}</p>

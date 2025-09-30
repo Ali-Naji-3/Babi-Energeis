@@ -18,6 +18,11 @@ use App\Http\Controllers\ProfileController;
 
 // Public Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Favicon redirect for old path
+Route::get('/images/favicon.ico', function () {
+    return redirect('/favicon.ico', 301);
+});
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/energy-audit', [EnergyAuditController::class, 'index'])->name('energy-audit');
